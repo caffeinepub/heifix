@@ -2,9 +2,11 @@
   "kind": "feature_evidence_report",
   "features": [
     {
-      "featureId": "feature-add-a-more-realistic-photorealistic-hero-image-and-a-more-realistic-logo-image-to-the-app-as-static-assets-under-frontend-public-assets-generated",
-      "featureTitle": "Add a more realistic (photorealistic) hero image and a more realistic logo image to the app as static assets under frontend/public/assets/generated.",
-      "files": [],
+      "featureId": "feature-fix-the-sign-in-sign-out-button-behavior-so-it-no-longer-incorrectly-await-s-non-promise-login-clear-calls-and-so-the-ui-remains-responsive-and-consistent-during-login-logout",
+      "featureTitle": "Fix the Sign In / Sign Out button behavior so it no longer incorrectly `await`s non-Promise `login()` / `clear()` calls, and so the UI remains responsive and consistent during login/logout.",
+      "files": [
+        "frontend/src/components/AuthButton.tsx"
+      ],
       "components": [
         "authorization@4.0.0",
         "core-infrastructure@1.0.2",
@@ -14,15 +16,16 @@
         "github-export-icp-cli@1.0.0"
       ],
       "testIds": [
-        "REQ-9"
+        "REQ-11"
       ],
       "confidence": "high"
     },
     {
-      "featureId": "feature-update-the-ui-to-use-the-new-realistic-images-replace-the-home-page-hero-image-src-and-the-header-logo-image-src-to-point-to-the-new-generated-asset-filenames",
-      "featureTitle": "Update the UI to use the new realistic images: replace the Home page hero image src and the header logo image src to point to the new generated asset filenames.",
+      "featureId": "feature-add-clear-user-facing-authentication-error-feedback-anywhere-the-app-prompts-for-login-header-authbutton-area-and-authgate-screen-using-english-text-including-a-visible-error-message-when-loginstatus-loginerror-and-an-obvious-try-again-action",
+      "featureTitle": "Add clear, user-facing authentication error feedback anywhere the app prompts for login (header AuthButton area and AuthGate screen), using English text, including a visible error message when `loginStatus === 'loginError'` and an obvious “Try again” action.",
       "files": [
-        "frontend/src/App.tsx"
+        "frontend/src/components/AuthButton.tsx",
+        "frontend/src/components/AuthGate.tsx"
       ],
       "components": [
         "authorization@4.0.0",
@@ -33,7 +36,26 @@
         "github-export-icp-cli@1.0.0"
       ],
       "testIds": [
-        "REQ-10"
+        "REQ-12"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-add-basic-troubleshooting-hints-on-the-authgate-login-screen-for-common-internet-identity-issues-e-g-pop-up-blockers-third-party-cookies-using-english-user-facing-text",
+      "featureTitle": "Add basic troubleshooting hints on the AuthGate login screen for common Internet Identity issues (e.g., pop-up blockers, third-party cookies) using English user-facing text.",
+      "files": [
+        "frontend/src/components/AuthGate.tsx"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-13"
       ],
       "confidence": "high"
     }

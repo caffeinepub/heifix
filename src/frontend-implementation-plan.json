@@ -1,41 +1,57 @@
 {
   "kind": "implementation_plan",
   "version": "1.0",
-  "title": "Replace HEIFIX hero/branding images with more realistic visuals",
+  "title": "Fix Internet Identity login/logout UX responsiveness and error handling",
   "requirements": [
     {
-      "id": "REQ-9",
-      "summary": "Add photorealistic hero and logo images as generated static assets.",
+      "id": "REQ-11",
+      "summary": "Make Sign In/Sign Out interactions responsive by removing incorrect awaits on non-Promise login/clear calls and ensuring consistent cache clearing on logout.",
       "acceptanceCriteria": [
-        "New image files exist in frontend/public/assets/generated with the exact filenames specified in imageRequirements.edits output filenames.",
-        "The new images visually appear more realistic/photorealistic than the current ones (less illustrative/cartoon-like)."
+        "Clicking “Sign In” triggers Internet Identity login reliably without unhandled promise/async errors in the console caused by awaiting non-Promise functions",
+        "Clicking “Sign Out” clears the React Query cache and returns the UI to the signed-out state reliably",
+        "The Sign In button is disabled while `loginStatus === 'logging-in'` to prevent multiple concurrent login attempts"
       ],
       "file_operations": [
         {
-          "path": "frontend/public/assets/generated/hero-repair-realistic.dim_1600x600.png",
-          "operation": "create",
-          "description": "Add the new photorealistic hero image asset (edited output): hero-repair-realistic.dim_1600x600.png."
-        },
-        {
-          "path": "frontend/public/assets/generated/repair-logo-realistic.dim_512x512.png",
-          "operation": "create",
-          "description": "Add the new realistic/professional logo image asset (edited output): repair-logo-realistic.dim_512x512.png (clean/transparent background as applicable)."
+          "path": "frontend/src/components/AuthButton.tsx",
+          "operation": "modify",
+          "description": "Update the AuthButton to stop `await`ing `login()` and `clear()` (they are non-Promise calls from the immutable hook), keep the UI responsive during transitions, and ensure logout still clears the React Query cache immediately after invoking `clear()`. Use the authorization component's frontend guidance for login/logout UX patterns; verify the component's usage instructions before implementing."
         }
       ]
     },
     {
-      "id": "REQ-10",
-      "summary": "Update the header logo and Home hero image to use the new realistic generated assets.",
+      "id": "REQ-12",
+      "summary": "Show user-facing authentication error feedback with a retry action in both the header AuthButton area and AuthGate screen.",
       "acceptanceCriteria": [
-        "In frontend/src/App.tsx, the header logo <img> uses the new realistic logo filename.",
-        "In frontend/src/App.tsx, the Home page hero <img> uses the new realistic hero filename.",
-        "The Home page and header render without broken image links in the browser."
+        "When Internet Identity fails to login, the UI displays an error message (derived from `loginError` when available) instead of silently failing",
+        "A “Try again” action is provided that re-triggers login from a direct user click",
+        "AuthGate’s sign-in screen also shows the error state and retry action if login fails"
       ],
       "file_operations": [
         {
-          "path": "frontend/src/App.tsx",
+          "path": "frontend/src/components/AuthButton.tsx",
           "operation": "modify",
-          "description": "Update image src references to point to the new generated filenames: replace /assets/generated/repair-logo.dim_512x512.png with /assets/generated/repair-logo-realistic.dim_512x512.png and replace /assets/generated/hero-repair.dim_1600x600.png with /assets/generated/hero-repair-realistic.dim_1600x600.png. Ensure no other UI or routing behavior changes and no edits occur under frontend/src/components/ui."
+          "description": "Render an English, user-visible error message when `loginStatus === 'loginError'` (using `loginError?.message` when available) in the header auth area, and add an obvious “Try again” action that calls `login()` from a direct click. Use the authorization component's frontend error-handling guidance; verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/components/AuthGate.tsx",
+          "operation": "modify",
+          "description": "Extend AuthGate to display the same login error state (`loginStatus === 'loginError'`) with an English error message and a “Try again” action that re-triggers `login()` from a direct click. Use the authorization component's frontend error-handling guidance; verify the component's usage instructions before implementing."
+        }
+      ]
+    },
+    {
+      "id": "REQ-13",
+      "summary": "Add basic troubleshooting hints on the AuthGate login screen for common Internet Identity login issues.",
+      "acceptanceCriteria": [
+        "AuthGate includes a short hint section visible when the user is signed out (or when login fails) mentioning enabling pop-ups and allowing cookies for the identity provider",
+        "No new authentication providers are introduced; this remains Internet Identity only"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/AuthGate.tsx",
+          "operation": "modify",
+          "description": "Add an English troubleshooting hint section on the signed-out AuthGate screen (and keep it visible on login error), covering common issues like pop-up blockers and third-party/cross-site cookies for the Internet Identity provider; do not introduce any new auth providers. Verify any referenced authorization component UX guidance before implementing."
         }
       ]
     }

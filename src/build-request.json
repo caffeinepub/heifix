@@ -1,68 +1,73 @@
 {
   "kind": "build_request",
-  "title": "Replace HEIFIX hero/branding images with more realistic visuals",
-  "priority": "normal",
+  "title": "Fix Internet Identity login flow UX and error handling",
+  "priority": "high",
   "requirements": [
     {
-      "id": "REQ-9",
-      "text": "Add a more realistic (photorealistic) hero image and a more realistic logo image to the app as static assets under frontend/public/assets/generated.",
+      "id": "REQ-11",
+      "text": "Fix the Sign In / Sign Out button behavior so it no longer incorrectly `await`s non-Promise `login()` / `clear()` calls, and so the UI remains responsive and consistent during login/logout.",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "msg-1"
+          "msg-7"
         ],
         "quotes": [
-          "coloque uma imagem mais realista"
+          "nao esta dandopara fezer loguin"
         ]
       },
       "acceptanceCriteria": [
-        "New image files exist in frontend/public/assets/generated with the exact filenames specified in imageRequirements.edits output filenames.",
-        "The new images visually appear more realistic/photorealistic than the current ones (less illustrative/cartoon-like)."
+        "Clicking “Sign In” triggers Internet Identity login reliably without unhandled promise/async errors in the console caused by awaiting non-Promise functions",
+        "Clicking “Sign Out” clears the React Query cache and returns the UI to the signed-out state reliably",
+        "The Sign In button is disabled while `loginStatus === 'logging-in'` to prevent multiple concurrent login attempts"
       ]
     },
     {
-      "id": "REQ-10",
-      "text": "Update the UI to use the new realistic images: replace the Home page hero image src and the header logo image src to point to the new generated asset filenames.",
+      "id": "REQ-12",
+      "text": "Add clear, user-facing authentication error feedback anywhere the app prompts for login (header AuthButton area and AuthGate screen), using English text, including a visible error message when `loginStatus === 'loginError'` and an obvious “Try again” action.",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "msg-1"
+          "msg-7"
         ],
         "quotes": [
-          "coloque uma imagem mais realista"
+          "nao esta dandopara fezer loguin"
         ]
       },
       "acceptanceCriteria": [
-        "In frontend/src/App.tsx, the header logo <img> uses the new realistic logo filename.",
-        "In frontend/src/App.tsx, the Home page hero <img> uses the new realistic hero filename.",
-        "The Home page and header render without broken image links in the browser."
+        "When Internet Identity fails to login, the UI displays an error message (derived from `loginError` when available) instead of silently failing",
+        "A “Try again” action is provided that re-triggers login from a direct user click",
+        "AuthGate’s sign-in screen also shows the error state and retry action if login fails"
+      ]
+    },
+    {
+      "id": "REQ-13",
+      "text": "Add basic troubleshooting hints on the AuthGate login screen for common Internet Identity issues (e.g., pop-up blockers, third-party cookies) using English user-facing text.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-7"
+        ],
+        "quotes": [
+          "nao esta dandopara fezer loguin"
+        ]
+      },
+      "acceptanceCriteria": [
+        "AuthGate includes a short hint section visible when the user is signed out (or when login fails) mentioning enabling pop-ups and allowing cookies for the identity provider",
+        "No new authentication providers are introduced; this remains Internet Identity only"
       ]
     }
   ],
   "constraints": [
-    "Do not edit any files under frontend/src/components/ui (read-only).",
-    "Do not modify the Internet Identity hooks or other files listed in frontend.immutablePaths.",
-    "Do not route images through the backend; serve them as static assets from frontend/public/assets/generated."
+    "Do not edit files under frontend/src/hooks/useInternetIdentity.ts or other paths listed as immutable in SYSTEM_CONTEXT.",
+    "Keep the backend as a single Motoko actor; no new backend canisters/services.",
+    "Use English for any user-facing text in the UI changes."
   ],
   "nonGoals": [
-    "Implementing or editing the services/products catalog and pricing.",
-    "Backend (Motoko) changes."
+    "Adding non-Internet-Identity authentication methods (OAuth, social login, email/password).",
+    "Implementing real-time communication or external database integrations."
   ],
   "imageRequirements": {
     "required": [],
-    "edits": [
-      "Make the hero image more photorealistic, with realistic lighting and a professional phone-repair workbench scene, keeping room for a left-to-right dark overlay for text contrast (hero-repair.dim_1600x600.png > hero-repair-realistic.dim_1600x600.png)",
-      "Make the logo more realistic and professional (still simple and readable at small sizes), avoiding cartoon styling and keeping a transparent/clean background (repair-logo.dim_512x512.png > repair-logo-realistic.dim_512x512.png)"
-    ]
-  },
-  "userProfileUpdate": {
-    "goalsToAdd": [],
-    "goalsToRemove": [],
-    "preferencesToAdd": [],
-    "preferencesToRemove": [],
-    "miscToAdd": [],
-    "miscToRemove": [],
-    "fieldsToSet": {},
-    "fieldsToDelete": []
+    "edits": []
   }
 }

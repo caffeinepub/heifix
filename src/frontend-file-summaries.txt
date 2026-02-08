@@ -1,7 +1,7 @@
 {
   "frontend/src/App.tsx": "Main application component with TanStack Router setup, responsive header with \"HEIFIX\" branding using realistic logo and hero images, authentication state management, and routing for all pages (home, create ticket, my tickets, ticket details, staff dashboard).",
-  "frontend/src/components/AuthButton.tsx": "Reusable authentication button component that handles Internet Identity login/logout with proper query cache clearing on logout.",
-  "frontend/src/components/AuthGate.tsx": "Guard component that blocks unauthenticated users from accessing protected features while showing a sign-in prompt.",
+  "frontend/src/components/AuthButton.tsx": "Authentication button component that handles Internet Identity login/logout without awaiting non-Promise functions, displays login errors with retry action, and clears React Query cache on logout.",
+  "frontend/src/components/AuthGate.tsx": "Guard component that blocks unauthenticated users with a sign-in prompt, displays login errors with retry action, and includes troubleshooting hints for common Internet Identity login issues.",
   "frontend/src/components/TicketStatusBadge.tsx": "Presentational component that renders ticket status as a styled badge with appropriate variants for each status type.",
   "frontend/src/components/StatusHistoryTimeline.tsx": "Timeline component that displays chronological status history with timestamps, status badges, and optional notes for each status change.",
   "frontend/src/hooks/useRole.ts": "React Query hooks for fetching user role information (getCallerUserRole, isCallerAdmin) from the backend with proper actor dependency management.",

@@ -1,13 +1,13 @@
 {
   "schemaVersion": "1.0.0",
-  "projectStateVersion": 7,
+  "projectStateVersion": 9,
   "summary": "App/projeto HEIFIX para assistência técnica de celulares (serviço de diagnóstico e reparo), incluindo catálogo de serviços com preço e descrição.",
   "architectural_notes": [],
   "known_issues": [
-    "Falha ao implementar solicitação anterior (mensagem: \"The AI couldn't implement your request. Please simplify or rephrase your prompt.\")"
+    "Falha ao implementar solicitação anterior (mensagem: \"The AI couldn't implement your request. Please simplify or rephrase your prompt.\")",
+    "Usuário relata que não está conseguindo fazer login (problema no fluxo de autenticação)."
   ],
-  "isFixRequest": false,
-  "imageRequirements": "## Edit Images\n- Make the hero image more photorealistic, with realistic lighting and a professional phone-repair workbench scene, keeping room for a left-to-right dark overlay for text contrast (hero-repair.dim_1600x600.png > hero-repair-realistic.dim_1600x600.png)\n- Make the logo more realistic and professional (still simple and readable at small sizes), avoiding cartoon styling and keeping a transparent/clean background (repair-logo.dim_512x512.png > repair-logo-realistic.dim_512x512.png)",
+  "isFixRequest": true,
   "existing_features": [
     {
       "id": "feature-implement-internet-identity-authentication-and-show-a-signed-in-vs-signed-out-ui-state-across-the-app",
@@ -62,6 +62,30 @@
       "title": "Update the UI to use the new realistic images: replace the Home page hero image src and the header logo image src to point to the new generated asset filenames.",
       "reqIds": [
         "REQ-10"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-fix-the-sign-in-sign-out-button-behavior-so-it-no-longer-incorrectly-await-s-non-promise-login-clear-calls-and-so-the-ui-remains-responsive-and-consistent-during-login-logout",
+      "title": "Fix the Sign In / Sign Out button behavior so it no longer incorrectly `await`s non-Promise `login()` / `clear()` calls, and so the UI remains responsive and consistent during login/logout.",
+      "reqIds": [
+        "REQ-11"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-clear-user-facing-authentication-error-feedback-anywhere-the-app-prompts-for-login-header-authbutton-area-and-authgate-screen-using-english-text-including-a-visible-error-message-when-loginstatus-loginerror-and-an-obvious-try-again-action",
+      "title": "Add clear, user-facing authentication error feedback anywhere the app prompts for login (header AuthButton area and AuthGate screen), using English text, including a visible error message when `loginStatus === 'loginError'` and an obvious “Try again” action.",
+      "reqIds": [
+        "REQ-12"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-basic-troubleshooting-hints-on-the-authgate-login-screen-for-common-internet-identity-issues-e-g-pop-up-blockers-third-party-cookies-using-english-user-facing-text",
+      "title": "Add basic troubleshooting hints on the AuthGate login screen for common Internet Identity issues (e.g., pop-up blockers, third-party cookies) using English user-facing text.",
+      "reqIds": [
+        "REQ-13"
       ],
       "version": 1
     }

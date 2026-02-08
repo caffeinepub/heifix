@@ -1,37 +1,48 @@
 {
   "kind": "coverage_report",
   "version": "1.0",
-  "generatedAt": "2026-02-08T13:15:23.816Z",
+  "generatedAt": "2026-02-08T13:23:32.359Z",
   "sources": {
     "buildRequest": true,
     "implementationPlan": true
   },
   "requirements": {
-    "total": 2,
-    "implemented": 2,
+    "total": 3,
+    "implemented": 3,
     "items": [
       {
-        "id": "REQ-10",
-        "summary": "Update the UI to use the new realistic images: replace the Home page hero image src and the header logo image src to point to the new generated asset filenames.",
+        "id": "REQ-11",
+        "summary": "Fix the Sign In / Sign Out button behavior so it no longer incorrectly `await`s non-Promise `login()` / `clear()` calls, and so the UI remains responsive and consistent during login/logout.",
         "status": "implemented",
         "plannedFiles": [
-          "frontend/src/App.tsx"
+          "frontend/src/components/AuthButton.tsx"
         ],
         "matchedFiles": [
-          "frontend/src/App.tsx"
+          "frontend/src/components/AuthButton.tsx"
         ]
       },
       {
-        "id": "REQ-9",
-        "summary": "Add a more realistic (photorealistic) hero image and a more realistic logo image to the app as static assets under frontend/public/assets/generated.",
+        "id": "REQ-12",
+        "summary": "Add clear, user-facing authentication error feedback anywhere the app prompts for login (header AuthButton area and AuthGate screen), using English text, including a visible error message when `loginStatus === 'loginError'` and an obvious “Try again” action.",
         "status": "implemented",
         "plannedFiles": [
-          "frontend/public/assets/generated/hero-repair-realistic.dim_1600x600.png",
-          "frontend/public/assets/generated/repair-logo-realistic.dim_512x512.png"
+          "frontend/src/components/AuthButton.tsx",
+          "frontend/src/components/AuthGate.tsx"
         ],
         "matchedFiles": [
-          "frontend/public/assets/generated/hero-repair-realistic.dim_1600x600.png",
-          "frontend/public/assets/generated/repair-logo-realistic.dim_512x512.png"
+          "frontend/src/components/AuthButton.tsx",
+          "frontend/src/components/AuthGate.tsx"
+        ]
+      },
+      {
+        "id": "REQ-13",
+        "summary": "Add basic troubleshooting hints on the AuthGate login screen for common Internet Identity issues (e.g., pop-up blockers, third-party cookies) using English user-facing text.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/components/AuthGate.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/components/AuthGate.tsx"
         ]
       }
     ]
@@ -41,9 +52,8 @@
     "feature_evidence.json",
     "frontend-file-summaries.txt",
     "frontend-implementation-plan.json",
-    "frontend/public/assets/generated/hero-repair-realistic.dim_1600x600.png",
-    "frontend/public/assets/generated/repair-logo-realistic.dim_512x512.png",
-    "frontend/src/App.tsx",
+    "frontend/src/components/AuthButton.tsx",
+    "frontend/src/components/AuthGate.tsx",
     "project_state.json",
     "scratch/component-selection.json",
     "spec.md",
