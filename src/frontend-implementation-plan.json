@@ -1,0 +1,43 @@
+{
+  "kind": "implementation_plan",
+  "version": "1.0",
+  "title": "Replace HEIFIX hero/branding images with more realistic visuals",
+  "requirements": [
+    {
+      "id": "REQ-9",
+      "summary": "Add photorealistic hero and logo images as generated static assets.",
+      "acceptanceCriteria": [
+        "New image files exist in frontend/public/assets/generated with the exact filenames specified in imageRequirements.edits output filenames.",
+        "The new images visually appear more realistic/photorealistic than the current ones (less illustrative/cartoon-like)."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/public/assets/generated/hero-repair-realistic.dim_1600x600.png",
+          "operation": "create",
+          "description": "Add the new photorealistic hero image asset (edited output): hero-repair-realistic.dim_1600x600.png."
+        },
+        {
+          "path": "frontend/public/assets/generated/repair-logo-realistic.dim_512x512.png",
+          "operation": "create",
+          "description": "Add the new realistic/professional logo image asset (edited output): repair-logo-realistic.dim_512x512.png (clean/transparent background as applicable)."
+        }
+      ]
+    },
+    {
+      "id": "REQ-10",
+      "summary": "Update the header logo and Home hero image to use the new realistic generated assets.",
+      "acceptanceCriteria": [
+        "In frontend/src/App.tsx, the header logo <img> uses the new realistic logo filename.",
+        "In frontend/src/App.tsx, the Home page hero <img> uses the new realistic hero filename.",
+        "The Home page and header render without broken image links in the browser."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Update image src references to point to the new generated filenames: replace /assets/generated/repair-logo.dim_512x512.png with /assets/generated/repair-logo-realistic.dim_512x512.png and replace /assets/generated/hero-repair.dim_1600x600.png with /assets/generated/hero-repair-realistic.dim_1600x600.png. Ensure no other UI or routing behavior changes and no edits occur under frontend/src/components/ui."
+        }
+      ]
+    }
+  ]
+}

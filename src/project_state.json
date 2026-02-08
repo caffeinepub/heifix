@@ -1,0 +1,116 @@
+{
+  "schemaVersion": "1.0.0",
+  "projectStateVersion": 7,
+  "summary": "App/projeto HEIFIX para assistência técnica de celulares (serviço de diagnóstico e reparo), incluindo catálogo de serviços com preço e descrição.",
+  "architectural_notes": [],
+  "known_issues": [
+    "Falha ao implementar solicitação anterior (mensagem: \"The AI couldn't implement your request. Please simplify or rephrase your prompt.\")"
+  ],
+  "isFixRequest": false,
+  "imageRequirements": "## Edit Images\n- Make the hero image more photorealistic, with realistic lighting and a professional phone-repair workbench scene, keeping room for a left-to-right dark overlay for text contrast (hero-repair.dim_1600x600.png > hero-repair-realistic.dim_1600x600.png)\n- Make the logo more realistic and professional (still simple and readable at small sizes), avoiding cartoon styling and keeping a transparent/clean background (repair-logo.dim_512x512.png > repair-logo-realistic.dim_512x512.png)",
+  "existing_features": [
+    {
+      "id": "feature-implement-internet-identity-authentication-and-show-a-signed-in-vs-signed-out-ui-state-across-the-app",
+      "title": "Implement Internet Identity authentication and show a signed-in vs signed-out UI state across the app.",
+      "reqIds": [
+        "REQ-1"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-build-the-main-frontend-flows-1-create-repair-request-form-2-my-tickets-list-3-ticket-details-page-with-status-history-timeline-and-4-staff-dashboard-to-manage-all-tickets-visible-only-to-authorized-staff",
+      "title": "Build the main frontend flows: (1) Create Repair Request form, (2) My Tickets list, (3) Ticket Details page with status history timeline, and (4) Staff Dashboard to manage all tickets (visible only to authorized staff).",
+      "reqIds": [
+        "REQ-4"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-establish-a-coherent-visual-theme-colors-typography-spacing-and-component-styling-suitable-for-a-professional-phone-repair-shop-avoid-blue-purple-apply-consistently-across-pages-using-tailwind-and-existing-ui-components-compose-without-modifying-read-only-component-sources",
+      "title": "Establish a coherent visual theme (colors, typography, spacing, and component styling) suitable for a professional phone repair shop. Avoid blue/purple. Apply consistently across pages using Tailwind and existing UI components (compose without modifying read-only component sources).",
+      "reqIds": [
+        "REQ-6"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-the-app-s-visible-brand-name-to-heifix-in-the-main-header-so-the-logo-title-area-displays-heifix-instead-of-the-current-name",
+      "title": "Update the app’s visible brand name to \"HEIFIX\" in the main header so the logo/title area displays \"HEIFIX\" instead of the current name.",
+      "reqIds": [
+        "REQ-7"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-the-browser-tab-document-title-to-use-heifix-replace-the-current-generic-title-in-frontend-index-html",
+      "title": "Update the browser tab/document title to use \"HEIFIX\" (replace the current generic title in frontend/index.html).",
+      "reqIds": [
+        "REQ-8"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-a-more-realistic-photorealistic-hero-image-and-a-more-realistic-logo-image-to-the-app-as-static-assets-under-frontend-public-assets-generated",
+      "title": "Add a more realistic (photorealistic) hero image and a more realistic logo image to the app as static assets under frontend/public/assets/generated.",
+      "reqIds": [
+        "REQ-9"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-the-ui-to-use-the-new-realistic-images-replace-the-home-page-hero-image-src-and-the-header-logo-image-src-to-point-to-the-new-generated-asset-filenames",
+      "title": "Update the UI to use the new realistic images: replace the Home page hero image src and the header logo image src to point to the new generated asset filenames.",
+      "reqIds": [
+        "REQ-10"
+      ],
+      "version": 1
+    }
+  ],
+  "new_feature_requests": [
+    {
+      "id": "AR-1",
+      "summary": "Definir e criar um app para assistência técnica de celulares (fluxos principais e funcionalidades).",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-3",
+      "summary": "Create the core data model and persistence in the Motoko single-actor backend for repair tickets, including: ticket id, createdBy principal, customer contact fields (name, phone/email), device info (brand/model), issue description, createdAt timestamp, status (e.g., New/In Progress/Waiting for Parts/Ready/Closed), optional price estimate, optional technician notes, and a status history log.",
+      "reqIds": [
+        "REQ-2"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-4",
+      "summary": "Provide backend APIs to: create a ticket, list tickets for the current user, get ticket details, and allow an authorized technician/admin to list all tickets and update ticket status/estimate/notes.",
+      "reqIds": [
+        "REQ-3"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-6",
+      "summary": "Add a simple role/authorization mechanism: maintain an allowlist of staff principals in the backend, with backend methods to add/remove staff (restricted to a canister admin/owner) and a read method for the frontend to determine staff access.",
+      "reqIds": [
+        "REQ-5"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-7",
+      "summary": "Adicionar catálogo de serviços com preço e descrição detalhada de cada tipo de reparo.",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-8",
+      "summary": "Adicionar uma imagem mais realista ao app (ex.: banner/hero/ilustração principal) para melhorar o visual/branding do HEIFIX.",
+      "reqIds": [],
+      "status": "pending"
+    }
+  ],
+  "projectName": "HEIFIX",
+  "clarification_mode": "instant",
+  "clarification_rounds": 0
+}

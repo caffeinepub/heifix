@@ -1,0 +1,16 @@
+{
+  "frontend/src/App.tsx": "Main application component with TanStack Router setup, responsive header with \"HEIFIX\" branding using realistic logo and hero images, authentication state management, and routing for all pages (home, create ticket, my tickets, ticket details, staff dashboard).",
+  "frontend/src/components/AuthButton.tsx": "Reusable authentication button component that handles Internet Identity login/logout with proper query cache clearing on logout.",
+  "frontend/src/components/AuthGate.tsx": "Guard component that blocks unauthenticated users from accessing protected features while showing a sign-in prompt.",
+  "frontend/src/components/TicketStatusBadge.tsx": "Presentational component that renders ticket status as a styled badge with appropriate variants for each status type.",
+  "frontend/src/components/StatusHistoryTimeline.tsx": "Timeline component that displays chronological status history with timestamps, status badges, and optional notes for each status change.",
+  "frontend/src/hooks/useRole.ts": "React Query hooks for fetching user role information (getCallerUserRole, isCallerAdmin) from the backend with proper actor dependency management.",
+  "frontend/src/hooks/useTickets.ts": "Comprehensive React Query hooks for all ticket operations including create, list (my/all), details, and update with automatic cache invalidation.",
+  "frontend/src/pages/CreateTicketPage.tsx": "Form page for creating new repair requests with validation, success confirmation showing ticket ID, and navigation to ticket list.",
+  "frontend/src/pages/MyTicketsPage.tsx": "User's personal ticket list page with sortable table, status badges, and navigation to individual ticket details.",
+  "frontend/src/pages/TicketDetailsPage.tsx": "Detailed view of a single ticket showing all information, price estimate, technician notes, and complete status history timeline.",
+  "frontend/src/pages/StaffDashboardPage.tsx": "Admin-only dashboard for managing all tickets with filtering by status, inline editing dialog for updating ticket status/estimate/notes, and access control enforcement.",
+  "frontend/src/index.css": "Global styles with charcoal/amber OKLCH color theme for both light and dark modes, avoiding blue/purple palette.",
+  "frontend/tailwind.config.js": "Tailwind configuration extended with charcoal/amber color tokens, custom font family, and enhanced shadows for professional appearance.",
+  "frontend/index.html": "HTML entry point with \"HEIFIX\" as the document title for browser tab display."
+}

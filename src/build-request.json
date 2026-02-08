@@ -1,0 +1,68 @@
+{
+  "kind": "build_request",
+  "title": "Replace HEIFIX hero/branding images with more realistic visuals",
+  "priority": "normal",
+  "requirements": [
+    {
+      "id": "REQ-9",
+      "text": "Add a more realistic (photorealistic) hero image and a more realistic logo image to the app as static assets under frontend/public/assets/generated.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "coloque uma imagem mais realista"
+        ]
+      },
+      "acceptanceCriteria": [
+        "New image files exist in frontend/public/assets/generated with the exact filenames specified in imageRequirements.edits output filenames.",
+        "The new images visually appear more realistic/photorealistic than the current ones (less illustrative/cartoon-like)."
+      ]
+    },
+    {
+      "id": "REQ-10",
+      "text": "Update the UI to use the new realistic images: replace the Home page hero image src and the header logo image src to point to the new generated asset filenames.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "coloque uma imagem mais realista"
+        ]
+      },
+      "acceptanceCriteria": [
+        "In frontend/src/App.tsx, the header logo <img> uses the new realistic logo filename.",
+        "In frontend/src/App.tsx, the Home page hero <img> uses the new realistic hero filename.",
+        "The Home page and header render without broken image links in the browser."
+      ]
+    }
+  ],
+  "constraints": [
+    "Do not edit any files under frontend/src/components/ui (read-only).",
+    "Do not modify the Internet Identity hooks or other files listed in frontend.immutablePaths.",
+    "Do not route images through the backend; serve them as static assets from frontend/public/assets/generated."
+  ],
+  "nonGoals": [
+    "Implementing or editing the services/products catalog and pricing.",
+    "Backend (Motoko) changes."
+  ],
+  "imageRequirements": {
+    "required": [],
+    "edits": [
+      "Make the hero image more photorealistic, with realistic lighting and a professional phone-repair workbench scene, keeping room for a left-to-right dark overlay for text contrast (hero-repair.dim_1600x600.png > hero-repair-realistic.dim_1600x600.png)",
+      "Make the logo more realistic and professional (still simple and readable at small sizes), avoiding cartoon styling and keeping a transparent/clean background (repair-logo.dim_512x512.png > repair-logo-realistic.dim_512x512.png)"
+    ]
+  },
+  "userProfileUpdate": {
+    "goalsToAdd": [],
+    "goalsToRemove": [],
+    "preferencesToAdd": [],
+    "preferencesToRemove": [],
+    "miscToAdd": [],
+    "miscToRemove": [],
+    "fieldsToSet": {},
+    "fieldsToDelete": []
+  }
+}
